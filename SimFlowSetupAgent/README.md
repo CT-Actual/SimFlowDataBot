@@ -72,7 +72,7 @@ python simflow_setup_agent.py table --vehicle gt3
 The agent can also be used programmatically:
 
 ```python
-from simflow_setup_agent import SimFlowSetupAgent
+from SimFlowSetupAgent import SimFlowSetupAgent
 
 # Initialize agent
 agent = SimFlowSetupAgent()
