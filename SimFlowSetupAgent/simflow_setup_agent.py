@@ -148,7 +148,7 @@ class SimFlowSetupAgent:
         track_adjustments = self._get_track_specific_adjustments(track_name, vehicle_category)
         
         # Add session-specific adjustments
-        session_adjustments = self._get_session_specific_adjustments(session_type, aggression_level)
+        session_adjustments = self._get_session_specific_adjustments(profile, session_type, aggression_level)
         
         recommendations = {
             "track_name": track_name,
@@ -510,41 +510,198 @@ class SimFlowSetupAgent:
         
         return assessments
     
-    def _generate_parameter_recommendation(self, param: str, setup_data: Dict[str, Any], 
+    def _generate_parameter_recommendation(self, param: str, setup_data: Dict[str, Any],
                                          profile: Dict[str, Any], session_type: str) -> Optional[str]:
         """Generate recommendation for a specific parameter"""
-        # This is a placeholder - would contain sophisticated logic
-        return f"Optimize {param.replace('_', ' ')} for {session_type} session"
+        spec = self._find_parameter_spec(profile.get("setup_parameters", {}), param)
+        if not spec:
+            return None
+
+        # Find current value in parsed setup data
+        current = None
+        for section in setup_data.get("parsed_data", {}).values():
+            if isinstance(section, dict) and param in section:
+                current = section[param]
+                break
+
+        if current is None:
+            return None
+
+        recommendations = []
+
+        try:
+            val = float(current)
+            min_val = float(spec.get("min", val))
+            max_val = float(spec.get("max", val))
+
+            if val < min_val:
+                recommendations.append(f"Increase to at least {min_val}")
+            elif val > max_val:
+                recommendations.append(f"Decrease to no more than {max_val}")
+            else:
+                if "typical_range" in spec:
+                    low, high = spec["typical_range"]
+                    if val < low:
+                        recommendations.append(f"Raise toward {low}-{high}")
+                    elif val > high:
+                        recommendations.append(f"Lower toward {low}-{high}")
+        except (ValueError, TypeError):
+            if "options" in spec and current not in spec["options"]:
+                recommendations.append(f"Consider options: {', '.join(spec['options'])}")
+
+        if not recommendations and "default" in spec:
+            default = spec["default"]
+            if current != default:
+                recommendations.append(f"Use around {default}")
+
+        if recommendations:
+            return f"{param.replace('_', ' ').title()}: {'; '.join(recommendations)}"
+        return None
     
-    def _generate_baseline_setup(self, profile: Dict[str, Any], track_name: str, 
+    def _generate_baseline_setup(self, profile: Dict[str, Any], track_name: str,
                                session_type: str, aggression_level: str) -> Dict[str, Any]:
         """Generate baseline setup recommendations"""
-        # This is a placeholder - would contain track database and setup logic
-        return {"message": "Baseline setup generation not fully implemented"}
+        setup_params = profile.get("setup_parameters", {})
+        baseline = {}
+
+        for section, params in setup_params.items():
+            for name, spec in params.items():
+                if not isinstance(spec, dict):
+                    continue
+                if "default" in spec:
+                    val = spec["default"]
+                elif "typical_range" in spec:
+                    val = sum(spec["typical_range"]) / 2
+                elif "min" in spec and "max" in spec:
+                    val = (float(spec["min"]) + float(spec["max"])) / 2
+                elif "options" in spec:
+                    val = spec["options"][0]
+                else:
+                    val = None
+                baseline[name] = val
+
+        return baseline
     
     def _get_track_specific_adjustments(self, track_name: str, vehicle_category: str) -> Dict[str, Any]:
         """Get track-specific setup adjustments"""
-        # This is a placeholder - would contain track database
-        return {"message": f"Track-specific adjustments for {track_name} not implemented"}
+        profile = self.parser.vehicle_profiles.get(vehicle_category, {})
+        track_data = profile.get("track_specific_adjustments", {})
+
+        def categorize(name: str) -> str:
+            name = name.lower()
+            if any(t in name for t in ["daytona", "talladega", "pocono"]):
+                return "superspeedway"
+            if any(t in name for t in ["bristol", "martinsville", "richmond", "phoenix"]):
+                return "short_track"
+            if any(t in name for t in ["charlotte", "atlanta", "vegas", "las vegas", "texas", "kansas", "michigan", "homestead"]):
+                return "intermediate"
+            return "general"
+
+        category = categorize(track_name)
+        info = track_data.get(category)
+        adjustments = {}
+        if info and isinstance(info, dict):
+            for param in info.get("priority_adjustments", []):
+                spec = self._find_parameter_spec(profile.get("setup_parameters", {}), param)
+                if spec:
+                    if "typical_range" in spec:
+                        adjustments[param] = sum(spec["typical_range"]) / 2
+                    elif "default" in spec:
+                        adjustments[param] = spec["default"]
+                    elif "min" in spec and "max" in spec:
+                        adjustments[param] = (float(spec["min"]) + float(spec["max"])) / 2
+            if info.get("notes"):
+                adjustments["notes"] = info["notes"]
+        adjustments["track_category"] = category
+        return adjustments
     
-    def _get_session_specific_adjustments(self, session_type: str, aggression_level: str) -> Dict[str, Any]:
+    def _get_session_specific_adjustments(self, profile: Dict[str, Any], session_type: str, aggression_level: str) -> Dict[str, Any]:
         """Get session-specific setup adjustments"""
-        # This is a placeholder - would contain session-specific logic
-        return {"message": f"Session adjustments for {session_type} not implemented"}
+        priorities = profile.get("optimization_priorities", {}).get(session_type, {})
+
+        def select_value(spec: Dict[str, Any]) -> Any:
+            if aggression_level == "conservative":
+                if "typical_range" in spec:
+                    return spec["typical_range"][0]
+                return spec.get("min", spec.get("default"))
+            if aggression_level == "aggressive":
+                if "typical_range" in spec:
+                    return spec["typical_range"][1]
+                return spec.get("max", spec.get("default"))
+            if aggression_level == "experimental":
+                return spec.get("max", spec.get("default"))
+            # balanced
+            if "default" in spec:
+                return spec["default"]
+            if "typical_range" in spec:
+                return sum(spec["typical_range"]) / 2
+            if "min" in spec and "max" in spec:
+                return (float(spec["min"]) + float(spec["max"])) / 2
+            return None
+
+        adjustments = {}
+        setup_params = profile.get("setup_parameters", {})
+
+        for level in ["primary", "secondary", "fine_tuning"]:
+            for param in priorities.get(level, []):
+                spec = self._find_parameter_spec(setup_params, param)
+                if spec:
+                    adjustments[param] = select_value(spec)
+
+        adjustments["session"] = session_type
+        adjustments["aggression"] = aggression_level
+        return adjustments
     
-    def _combine_setup_adjustments(self, baseline: Dict[str, Any], 
-                                 track_adj: Dict[str, Any], 
+    def _combine_setup_adjustments(self, baseline: Dict[str, Any],
+                                 track_adj: Dict[str, Any],
                                  session_adj: Dict[str, Any]) -> Dict[str, Any]:
         """Combine all setup adjustments into final recommendations"""
-        # This is a placeholder - would contain sophisticated combination logic
-        return {"message": "Setup combination logic not fully implemented"}
+        combined = dict(baseline)
+
+        for source in (track_adj, session_adj):
+            for key, val in source.items():
+                if key in ["notes", "track_category", "session", "aggression"]:
+                    continue
+                combined[key] = val
+
+        return combined
     
-    def _generate_detailed_comparison(self, setup1: Dict[str, Any], 
-                                    setup2: Dict[str, Any], 
+    def _generate_detailed_comparison(self, setup1: Dict[str, Any],
+                                    setup2: Dict[str, Any],
                                     vehicle_category: str) -> Dict[str, Any]:
         """Generate detailed comparison between two setups"""
-        # This is a placeholder - would contain detailed comparison logic
-        return {"message": "Detailed comparison logic not fully implemented"}
+        parsed1 = setup1.get("setup_data", {}).get("parsed_data", {})
+        parsed2 = setup2.get("setup_data", {}).get("parsed_data", {})
+
+        differences = []
+        all_sections = set(parsed1.keys()) | set(parsed2.keys())
+        for section in all_sections:
+            sec1 = parsed1.get(section, {})
+            sec2 = parsed2.get(section, {})
+            all_params = set(sec1.keys()) | set(sec2.keys()) if isinstance(sec1, dict) else set(sec2.keys())
+            for param in all_params:
+                v1 = sec1.get(param)
+                v2 = sec2.get(param)
+                if v1 == v2:
+                    continue
+                diff = None
+                try:
+                    if v1 is not None and v2 is not None:
+                        diff = float(v2) - float(v1)
+                except (ValueError, TypeError):
+                    pass
+                differences.append({
+                    "section": section,
+                    "parameter": param,
+                    "setup1": v1,
+                    "setup2": v2,
+                    "difference": diff if diff is not None else ("changed" if v1 is not None and v2 is not None else "added" if v2 is not None else "removed")
+                })
+
+        summary = {
+            "total_differences": len(differences)
+        }
+        return {"differences": differences, "summary": summary}
 
 
 def main():
@@ -626,8 +783,13 @@ def main():
             output_file = agent.output_dir / f"{args.track}_recommendations.json"
             with open(output_file, 'w') as f:
                 json.dump(recommendations, f, indent=2)
-            
+
             print(f"Recommendations generated and saved to: {output_file}")
+            final = recommendations.get("final_recommendations", {})
+            if final:
+                print("\nKey Adjustments:")
+                for k, v in list(final.items())[:10]:
+                    print(f"  {k}: {v}")
         
         elif args.command == "table":
             print(f"Generating parameter table for {args.vehicle}")
