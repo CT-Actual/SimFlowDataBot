@@ -1,0 +1,3 @@
+pandas
+duckdb
+pathlib # pathlib is a standard library, but including it for clarity

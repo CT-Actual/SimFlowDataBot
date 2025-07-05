@@ -1,0 +1,271 @@
+{
+  "session_info": {
+    "session_id": "acuransxevo22gt3_fuji gp 2025-07-02 17-06-13_Stint",
+    "track": "fuji gp",
+    "vehicle": "acuransxevo22gt3",
+    "driver": "Chris Thompson21",
+    "analysis_timestamp": "2025-07-04T20:01:08.554412",
+    "session_path": "2025-Season3\\Car_Folder\\SESSIONS\\acuransxevo22gt3_fuji gp 2025-07-02 17-06-13_Stint"
+  },
+  "lap_performance": {
+    "best_lap_time_seconds": 202.231,
+    "best_lap_time_formatted": "03:22.231",
+    "average_lap_time_seconds": 215.92457894736842,
+    "average_lap_time_formatted": "03:35.925",
+    "theoretical_best_seconds": 198.18900000000002,
+    "theoretical_best_formatted": "03:18.189",
+    "time_lost_to_theoretical": 4.041999999999973,
+    "pace_efficiency_percent": 98.00129554816029,
+    "average_vs_best_gap": 13.693578947368422,
+    "average_vs_best_percent": 6.771256111757556
+  },
+  "consistency_metrics": {
+    "consistency_index": 0.1253193998446705,
+    "consistency_rating": "Very Poor",
+    "lap_time_standard_deviation": 27.059538645397385,
+    "performance_window_1_percent": 21.052631578947366,
+    "consistency_score": 0,
+    "repeatability_factor": 0.21052631578947367
+  },
+  "sector_performance": {
+    "sector_count": 21,
+    "sectors": {
+      "1 Str 0-1 (End)": {
+        "best_time": 11.018,
+        "best_time_formatted": "00:11.018",
+        "average_time": 14.244789473684211,
+        "consistency_index": 0.8585259972367759,
+        "improvement_seconds": 1.071666666666669,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "2 Turn 1": {
+        "best_time": 3.385,
+        "best_time_formatted": "00:03.385",
+        "average_time": 3.5928947368421054,
+        "consistency_index": 0.039214160931685234,
+        "improvement_seconds": 0.14733333333333354,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "3 Str 1-2": {
+        "best_time": 10.145,
+        "best_time_formatted": "00:10.145",
+        "average_time": 10.42978947368421,
+        "consistency_index": 0.021311216390802138,
+        "improvement_seconds": 0.40933333333333266,
+        "consistency_rating": "Average",
+        "improvement_rating": "Strong Improvement"
+      },
+      "4 Turn 2": {
+        "best_time": 0.515,
+        "best_time_formatted": "00:00.515",
+        "average_time": 0.5743684210526316,
+        "consistency_index": 0.0833848843345097,
+        "improvement_seconds": 0.043333333333333224,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Stable"
+      },
+      "5 Str 2-3": {
+        "best_time": 3.982,
+        "best_time_formatted": "00:03.982",
+        "average_time": 4.210526315789473,
+        "consistency_index": 0.052565019427002146,
+        "improvement_seconds": 0.13566666666666638,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "6 Turn 3": {
+        "best_time": 5.687,
+        "best_time_formatted": "00:05.687",
+        "average_time": 5.864,
+        "consistency_index": 0.02921058164466126,
+        "improvement_seconds": 0.26266666666666616,
+        "consistency_rating": "Average",
+        "improvement_rating": "Strong Improvement"
+      },
+      "7 Str 3-4": {
+        "best_time": 3.459,
+        "best_time_formatted": "00:03.459",
+        "average_time": 3.6073157894736836,
+        "consistency_index": 0.03027467784144401,
+        "improvement_seconds": 0.031333333333333435,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Stable"
+      },
+      "8 Turn 4": {
+        "best_time": 2.88,
+        "best_time_formatted": "00:02.880",
+        "average_time": 3.1975789473684215,
+        "consistency_index": 0.0665530249176994,
+        "improvement_seconds": 0.137,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "9 Str 4-5": {
+        "best_time": 14.354,
+        "best_time_formatted": "00:14.354",
+        "average_time": 14.761473684210527,
+        "consistency_index": 0.0194716242802803,
+        "improvement_seconds": -0.0643333333333338,
+        "consistency_rating": "Good",
+        "improvement_rating": "Decline"
+      },
+      "10 Turn 5": {
+        "best_time": 2.777,
+        "best_time_formatted": "00:02.777",
+        "average_time": 3.429315789473685,
+        "consistency_index": 0.0639392814331219,
+        "improvement_seconds": -0.24433333333333307,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Decline"
+      },
+      "11 Turn 6": {
+        "best_time": 2.041,
+        "best_time_formatted": "00:02.041",
+        "average_time": 2.3312105263157896,
+        "consistency_index": 0.1124141167722057,
+        "improvement_seconds": 0.5456666666666665,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "12 Str 6-7": {
+        "best_time": 4.485,
+        "best_time_formatted": "00:04.485",
+        "average_time": 4.755684210526315,
+        "consistency_index": 0.06810967148528188,
+        "improvement_seconds": 0.402333333333333,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "13 Turn 7": {
+        "best_time": 1.957,
+        "best_time_formatted": "00:01.957",
+        "average_time": 2.331263157894737,
+        "consistency_index": 0.049034307529586554,
+        "improvement_seconds": -0.085666666666667,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Decline"
+      },
+      "14 Str 7-8": {
+        "best_time": 2.529,
+        "best_time_formatted": "00:02.529",
+        "average_time": 2.8156315789473685,
+        "consistency_index": 0.07232731893618649,
+        "improvement_seconds": 0.2566666666666668,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "15 Turn 8": {
+        "best_time": 0.784,
+        "best_time_formatted": "00:00.784",
+        "average_time": 0.8169473684210528,
+        "consistency_index": 0.03759013517966996,
+        "improvement_seconds": 0.05666666666666664,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Moderate Improvement"
+      },
+      "16 Str 8-9": {
+        "best_time": 0.914,
+        "best_time_formatted": "00:00.914",
+        "average_time": 0.9965263157894737,
+        "consistency_index": 0.05256193532893394,
+        "improvement_seconds": 0.032666666666666844,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Stable"
+      },
+      "17 Turn 9": {
+        "best_time": 3.729,
+        "best_time_formatted": "00:03.729",
+        "average_time": 5.533894736842104,
+        "consistency_index": 0.5931347884661292,
+        "improvement_seconds": -0.7149999999999999,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Decline"
+      },
+      "18 Str 9-10": {
+        "best_time": 3.813,
+        "best_time_formatted": "00:03.813",
+        "average_time": 4.32578947368421,
+        "consistency_index": 0.1464757031167857,
+        "improvement_seconds": 0.07533333333333303,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Moderate Improvement"
+      },
+      "19 Turn 10": {
+        "best_time": 3.976,
+        "best_time_formatted": "00:03.976",
+        "average_time": 4.7586315789473685,
+        "consistency_index": 0.10157798487315611,
+        "improvement_seconds": 0.020666666666667055,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Stable"
+      },
+      "20 Str 0-1 (Start)": {
+        "best_time": 14.645,
+        "best_time_formatted": "00:14.645",
+        "average_time": 15.38457894736842,
+        "consistency_index": 0.1152479701895034,
+        "improvement_seconds": 0.34966666666666946,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      },
+      "21 Totals": {
+        "best_time": 101.114,
+        "best_time_formatted": "01:41.114",
+        "average_time": 107.96236842105263,
+        "consistency_index": 0.12531940161038563,
+        "improvement_seconds": 2.8696666666666886,
+        "consistency_rating": "Poor",
+        "improvement_rating": "Strong Improvement"
+      }
+    },
+    "overall_sector_improvement": 5.738333333333359,
+    "most_consistent_sector": "9 Str 4-5",
+    "least_consistent_sector": "1 Str 0-1 (End)",
+    "sector_consistency_range": 0.8390543729564957
+  },
+  "session_progression": {
+    "lap_progression_trend": 3.451444444444445,
+    "progression_rating": "Strong Improvement",
+    "session_length_laps": 19,
+    "learning_rate": 3.451444444444445,
+    "session_stability": 0
+  },
+  "vehicle_performance": {
+    "fuel": {
+      "data_available": true,
+      "total_rows": 113213
+    },
+    "tires": {
+      "left_data_available": true,
+      "right_data_available": true
+    },
+    "aerodynamics": {
+      "data_available": true,
+      "total_rows": 113213
+    }
+  },
+  "performance_summary": {
+    "overall_performance_score": 50.0,
+    "performance_grade": "C-",
+    "pace_score": 50,
+    "consistency_score": 0,
+    "progression_score": 100,
+    "key_strengths": [
+      "Strong improvement throughout session"
+    ],
+    "improvement_areas": [
+      "Improve lap time consistency",
+      "Reduce gap to theoretical best lap"
+    ]
+  },
+  "session_rating": {
+    "overall_rating": 30.0,
+    "rating_breakdown": {
+      "performance_weight": 0.6,
+      "consistency_weight": 0.4,
+      "weighted_score": 30.0
+    }
+  }
+}

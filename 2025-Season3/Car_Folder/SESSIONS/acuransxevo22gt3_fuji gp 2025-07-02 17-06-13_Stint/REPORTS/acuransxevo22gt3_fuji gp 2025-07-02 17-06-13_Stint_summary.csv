@@ -1,0 +1,11 @@
+Metric,Value,Unit,Category
+Session ID,acuransxevo22gt3_fuji gp 2025-07-02 17-06-13_Stint,,Session Info
+Track,fuji gp,,Session Info
+Vehicle,acuransxevo22gt3,,Session Info
+Best Lap Time,202.231,seconds,Lap Performance
+Average Lap Time,215.92457894736842,seconds,Lap Performance
+Theoretical Best,198.18900000000002,seconds,Lap Performance
+Consistency Index,0.1253193998446705,ratio,Consistency
+Performance Window 1%,21.052631578947366,percent,Consistency
+Overall Performance Score,50.0,score (0-100),Summary
+Performance Grade,C-,grade,Summary
