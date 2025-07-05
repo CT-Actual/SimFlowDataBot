@@ -8,7 +8,34 @@ Usage:
 """
 import subprocess
 import sys
+import shutil
 from pathlib import Path
+from datetime import datetime
+
+
+def _run_setup_agent(file_path: Path, car_name: str):
+    """Run SimFlowSetupAgent on the given file and store JSON output."""
+    cmd = [
+        "python",
+        "SimFlowSetupAgent/simflow_setup_agent.py",
+        "analyze",
+        "--file",
+        str(file_path),
+        "--vehicle",
+        car_name,
+        "--output",
+        "json",
+    ]
+    print(f"\n🛠️  Analyzing setup: {file_path.name}")
+    subprocess.run(cmd, check=False)
+
+    json_name = f"{file_path.stem}_analysis.json"
+    json_path = Path("SimFlowSetupAgent/output") / json_name
+    if json_path.exists():
+        dest_dir = Path("SimFlowSetupAgent/PROCESSED/by_car") / car_name / datetime.now().strftime("%Y-%m-%d")
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        shutil.move(str(json_path), dest_dir / json_name)
+        shutil.copy2(file_path, dest_dir / file_path.name)
 
 def main():
     print("🏁 SimFlowDataAgent - Processing DROP-OFF directory...")
@@ -55,22 +82,36 @@ def main():
         
         if result.returncode == 0:
             print("✅ Processing completed successfully!")
-            
+
             # Show results
-            processed_files = [f for f in dropoff_dir.iterdir() 
+            processed_files = [f for f in dropoff_dir.iterdir()
                              if f.name.endswith('.done')]
             print(f"📋 Processed {len(processed_files)} sessions")
-            
+
             # Show TOC if it exists
             toc_path = Path("2025-Season3/Car_Folder/TOC.md")
             if toc_path.exists():
                 print(f"📄 TOC updated: {toc_path}")
-            
+
             # Show archives
             archive_dir = Path("2025-Season3/ARCHIVE")
             if archive_dir.exists():
                 archives = list(archive_dir.glob("*.zip"))
                 print(f"📦 {len(archives)} sessions archived")
+
+            # Trigger setup analysis for any setup files moved to RAW
+            car_name = dropoff_dir.parent.name
+            sessions_root = dropoff_dir.parent / "SESSIONS"
+            for done in dropoff_dir.glob("*.done"):
+                session_id = done.stem
+                raw_dir = sessions_root / session_id / "RAW"
+                if not raw_dir.exists():
+                    continue
+                for f in raw_dir.iterdir():
+                    lower = f.name.lower()
+                    if lower.endswith('.htm') or lower.endswith('.xlsm') or \
+                       lower.endswith('.xlsx') or (lower.endswith('.csv') and 'setup' in lower):
+                        _run_setup_agent(f, car_name)
                 
         else:
             print("❌ Processing failed!")
