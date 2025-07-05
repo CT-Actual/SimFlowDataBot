@@ -6,6 +6,7 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HexFormat;
@@ -147,6 +148,19 @@ public class DropOffWatcher implements Runnable {
                 launchPythonScript("scripts/ingest_csv.py", destFile.toAbsolutePath().toString(), sessionId);
             } else if (fileName.endsWith(".pdf") || fileName.endsWith(".png")) {
                 launchPythonScript("scripts/handle_assets.py", destFile.toAbsolutePath().toString(), sessionId);
+            } else if (isSetupFile(fileName)) {
+                String carName = sessionsRoot.getParent().getFileName().toString();
+                launchPythonScript(
+                    "SimFlowSetupAgent/simflow_setup_agent.py",
+                    "analyze",
+                    "--file",
+                    destFile.toAbsolutePath().toString(),
+                    "--vehicle",
+                    carName,
+                    "--output",
+                    "json"
+                );
+                moveSetupAnalysis(destFile, carName);
             }
         }
 
@@ -175,6 +189,31 @@ public class DropOffWatcher implements Runnable {
         } catch (IOException | InterruptedException e) {
             System.err.println("Error launching Python script " + scriptPath + ": " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    private boolean isSetupFile(String name) {
+        String lower = name.toLowerCase();
+        return lower.endsWith(".htm") || lower.endsWith(".xlsm") || lower.endsWith(".xlsx") ||
+               (lower.endsWith(".csv") && lower.contains("setup"));
+    }
+
+    private void moveSetupAnalysis(Path file, String car) {
+        try {
+            String date = LocalDate.now().toString();
+            Path destDir = Paths.get("SimFlowSetupAgent", "PROCESSED", "by_car", car, date);
+            Files.createDirectories(destDir);
+
+            String name = file.getFileName().toString();
+            int idx = name.lastIndexOf('.');
+            if (idx != -1) name = name.substring(0, idx);
+            Path json = Paths.get("SimFlowSetupAgent", "output", name + "_analysis.json");
+            if (Files.exists(json)) {
+                Files.move(json, destDir.resolve(json.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+            }
+            Files.copy(file, destDir.resolve(file.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            System.err.println("Error moving setup analysis: " + e.getMessage());
         }
     }
 
