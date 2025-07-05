@@ -1,15 +1,7 @@
 #!/usr/bin/env python3
 """
-SimFlowSetupAgen        # Create required directories
-        directories = [
-            self.drop_off_dir / "setup_files",
-            self.drop_off_dir / "motec_sheets", 
-            self.drop_off_dir / "images",
-            self.processed_dir / "by_car",
-            self.processed_dir / "motec_analysis",
-            self.processed_dir / "reports"
-        ] File Parser
-Parses iRacing .htm setup files and MoTeC setup sheets (.csv/.xlsm)
+SimFlowSetupAgent - Setup File Parser
+Parses iRacing .htm setup files and MoTeC setup sheets (.csv/.xlsm).
 """
 
 import os
