@@ -101,17 +101,6 @@ Multi-agent racing data workflow system that watches DROP-OFF folder, processes 
     - [x] 20+ chart types available (line, pie, bar, column, area, etc.)
     - [x] Successfully tested with sample charts
     - [x] Ready for racing data visualization
-  - [ ] Sector comparison visualizations
-  - [ ] Performance trend graphs
-### 📊 Advanced Analysis Features
-- [x] **Chart Generation**
-  - [x] Lap time progression charts (matplotlib/plotly)
-  - [x] **AntV MCP Chart Server** - ✅ **INSTALLED & OPERATIONAL!**
-    - [x] Global npm installation complete
-    - [x] MCP server configuration added to cline_mcp_settings.json
-    - [x] 20+ chart types available (line, pie, bar, column, area, etc.)
-    - [x] Successfully tested with sample charts
-    - [x] Ready for racing data visualization
   - [ ] Sector comparison visualizations using AntV charts
   - [ ] Performance trend graphs using AntV charts
 
