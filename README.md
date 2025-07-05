@@ -90,6 +90,7 @@ To set up the development environment:
     ```
 4.  **Install Python packages**:
     ```bash
+    # Run this from the repository root
     pip install -r requirements.txt
     ```
 

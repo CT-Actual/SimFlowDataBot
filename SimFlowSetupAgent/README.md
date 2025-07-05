@@ -35,9 +35,9 @@ SimFlowSetupAgent is an advanced, data-driven setup optimization agent for iRaci
 ## Installation
 
 1. Clone or download the SimFlowSetupAgent directory
-2. Install required Python packages:
+2. Install required Python packages from the repository root:
    ```bash
-   pip install pandas beautifulsoup4 openpyxl
+   pip install -r ../requirements.txt
    ```
 3. Ensure you have Python 3.7+ installed
 
