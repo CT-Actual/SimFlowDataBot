@@ -108,6 +108,37 @@ ls 2025-Season3/Car_Folder/SESSIONS/
 cat 2025-Season3/Car_Folder/TOC.md
 ```
 
+## 🏎️ Setup Optimization with SimFlowSetupAgent
+
+SimFlowSetupAgent is included in this repository to analyze iRacing setup files and
+MoTeC setup sheets. Drop your setup files into
+`SimFlowSetupAgent/DROP-OFF/setup_files/` (MoTeC sheets go in
+`SimFlowSetupAgent/DROP-OFF/motec_sheets/`).
+
+Run the analysis script from the repository root:
+
+```bash
+python SimFlowSetupAgent/simflow_setup_agent.py analyze --file SimFlowSetupAgent/DROP-OFF/setup_files/MySetup.htm --vehicle gt3 --session sprint
+```
+
+Results are written to `SimFlowSetupAgent/PROCESSED/` and can be copied into the
+corresponding `SESSIONS/<session_id>/REPORTS/` directory created by
+SimFlowDataAgent. This keeps telemetry and setup analysis together.
+
+### Example Combined Workflow
+
+```bash
+# Process telemetry data
+python process_dropoff.py
+
+# Analyze the associated setup
+python SimFlowSetupAgent/simflow_setup_agent.py analyze --file SimFlowSetupAgent/DROP-OFF/setup_files/MySetup.htm --vehicle gt3 --session sprint
+
+# Review results
+ls 2025-Season3/Car_Folder/SESSIONS/
+ls SimFlowSetupAgent/PROCESSED/by_car/
+```
+
 ## 🔍 Troubleshooting
 
 ### Common Issues
