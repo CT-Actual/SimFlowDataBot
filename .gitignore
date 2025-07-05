@@ -32,3 +32,18 @@ __pycache__/
 
 # Archive files
 ARCHIVE/
+
+# SimFlowSetupAgent - Processed data and test files
+SimFlowSetupAgent/PROCESSED/
+SimFlowSetupAgent/DROP-OFF/setup_files/
+SimFlowSetupAgent/DROP-OFF/motec_sheets/
+SimFlowSetupAgent/DROP-OFF/images/
+SimFlowSetupAgent/*.htm
+SimFlowSetupAgent/*.csv
+SimFlowSetupAgent/test_organization.py
+SimFlowSetupAgent/DROP-OFF/README_old.md
+SimFlowSetupAgent/DROP-OFF/README_new.md
+SimFlowSetupAgent/*.xlsm
+
+# Large CSV files that exceed GitHub limits
+**/acuransxevo22gt3_fuji_SUS-RideHeights.csv

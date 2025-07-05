@@ -1,0 +1,39 @@
+Category,Parameter,Minimum,Maximum,Unit,Default,Typical_Range_Min,Typical_Range_Max,Description,Adjustment_Notes
+tires,Lf Tire Pressure,15,35,psi,25,22,28,Left Front tire pressure - Lower for more grip; higher for less drag,Adjust based on track temperature and banking angle
+tires,Lr Tire Pressure,15,35,psi,25,22,28,Left Rear tire pressure - Critical for handling balance,Higher pressure for loose condition; lower for tight
+tires,Rf Tire Pressure,45,65,psi,55,50,60,Right Front tire pressure - Higher than left side for oval racing,Adjust for front end grip and tire wear
+tires,Rr Tire Pressure,45,65,psi,55,50,60,Right Rear tire pressure - Primary handling adjustment,Most sensitive adjustment for loose/tight balance
+weight_distribution,Nose Weight,48.2,52.6,%,50.5,49.5,51.5,Front weight distribution percentage - Critical for balance,More nose weight for tight condition; less for loose
+weight_distribution,Left Side Weight,51.0,56.0,%,53.5,52.5,54.5,Left side weight percentage - Affects roll balance,Higher for more banking; lower for flatter tracks
+weight_distribution,Cross Weight,48.5,53.5,%,51.0,50.0,52.0,Cross weight (wedge) percentage - RF+LR vs LF+RR,More wedge for tight condition; less for loose
+suspension,Lf Spring Rate,400,4600,lbs/in,2500,2000,3500,Left Front spring rate - Affects front end compliance,Softer for grip; stiffer for stability
+suspension,Rf Spring Rate,400,4600,lbs/in,2500,2000,3500,Right Front spring rate - Balance with left front,Usually matched to left front for symmetry
+suspension,Lr Spring Rate,400,3000,lbs/in,1800,1500,2200,Left Rear spring rate - Affects rear grip and handling,Softer for more grip; stiffer for stability
+suspension,Rr Spring Rate,400,4600,lbs/in,2200,1800,2800,Right Rear spring rate - Critical for handling balance,Primary adjustment for loose/tight balance
+suspension,Front Camber,-6.0,6.0,degrees,-3.0,-4.0,-2.0,Front camber angle - Negative for better cornering,More negative for more grip; less for tire wear
+suspension,Rear Camber,-4.0,4.0,degrees,-2.0,-3.0,-1.0,Rear camber angle - Affects rear tire contact patch,Adjust for tire wear and grip balance
+suspension,Front Caster,8.0,11.0,degrees,9.5,9.0,10.0,Front caster angle - Affects steering feel and stability,More caster for stability; less for easier steering
+suspension,Front Toe,-0.21875,0.03125,inches,-0.09375,-0.15625,-0.03125,Front toe-in (-7/32 to +1/32) - Affects straight line stability,Toe-out for turn-in; toe-in for stability
+suspension,Lr Toe,-0.15625,0.15625,inches,0.0625,0.0,0.125,Left Rear toe-in (-5/32 to +5/32) - Affects handling balance,Toe-in for stability; toe-out for rotation
+suspension,Rr Toe,-0.03125,0.15625,inches,0.0625,0.0,0.125,Right Rear toe-in (-1/32 to +5/32) - Critical for handling,More toe-in for tight condition; less for loose
+anti_roll_bars,Front Arb Diameter,1.375,2.0,inches,1.75,1.625,1.875,Front anti-roll bar diameter - Affects front roll stiffness,Larger for less roll; smaller for more compliance
+anti_roll_bars,Front Arb Arm,P1,P5,position,P3,P2,P4,Front ARB arm position (1=softest; 5=stiffest),Higher number for stiffer front end
+anti_roll_bars,Front Arb Preload,-100,50,ft-lbs,-25,-50,0,Front anti-roll bar preload - Affects initial bar loading,Negative values unload the bar; positive preload it
+anti_roll_bars,Rear Arb Diameter,1.375,2.0,inches,1.75,1.625,1.875,Rear anti-roll bar diameter - Critical for handling balance,Primary adjustment for loose/tight balance
+anti_roll_bars,Rear Arb Arm,P1,P5,position,P3,P2,P4,Rear ARB arm position (1=softest; 5=stiffest),Most important handling adjustment
+anti_roll_bars,Rear Arb Preload,-100,50,ft-lbs,-25,-50,0,Rear anti-roll bar preload - Fine tuning adjustment,Adjust for fine balance tuning
+differential,Rear Diff Preload,0,75,ft-lbs,35,25,45,Rear differential preload - Affects power application,More preload for tighter diff; less for looser
+differential,Rear Diff Coast,0,75,ft-lbs,15,10,25,Rear differential coast setting - Affects off-throttle handling,Higher for more stability on entry
+shocks,Lf Shock Compression,1,10,clicks,5,3,7,Left Front shock compression (1=softest/fastest; 10=stiffest/slowest),Affects body control and grip
+shocks,Rf Shock Compression,1,10,clicks,5,3,7,Right Front shock compression (1=softest/fastest; 10=stiffest/slowest),Balance with left front for handling
+shocks,Lr Shock Compression,1,10,clicks,5,3,7,Left Rear shock compression (1=softest/fastest; 10=stiffest/slowest),Affects rear grip and stability
+shocks,Rr Shock Compression,1,10,clicks,5,3,7,Right Rear shock compression (1=softest/fastest; 10=stiffest/slowest),Critical for handling balance
+shocks,Lf Shock Rebound,1,10,clicks,5,3,7,Left Front shock rebound (1=softest/fastest; 10=stiffest/slowest),Affects how quickly suspension returns
+shocks,Rf Shock Rebound,1,10,clicks,5,3,7,Right Front shock rebound (1=softest/fastest; 10=stiffest/slowest),Balance with left front
+shocks,Lr Shock Rebound,1,10,clicks,5,3,7,Left Rear shock rebound (1=softest/fastest; 10=stiffest/slowest),Affects rear stability
+shocks,Rr Shock Rebound,1,10,clicks,5,3,7,Right Rear shock rebound (1=softest/fastest; 10=stiffest/slowest),Critical for handling balance
+aerodynamics,Front Splitter,0,4,position,2,1,3,Front splitter position (0=lowest; 4=highest),Lower for more front downforce; higher for less drag
+aerodynamics,Rear Spoiler,0,4,position,2,1,3,Rear spoiler position (0=lowest; 4=highest),Higher for more rear downforce and stability
+aerodynamics,Rear Deck Lid,0,4,position,2,1,3,Rear deck lid position (0=lowest; 4=highest),Affects rear downforce and balance
+brakes,Brake Bias,50.0,65.0,%,57.5,55.0,60.0,Brake bias percentage (front brake force),More forward for stability; more rearward for rotation
+fuel,Fuel Load,0,18,gallons,15,12,18,Fuel load for race - affects weight distribution,Full fuel for race; minimal for qualifying

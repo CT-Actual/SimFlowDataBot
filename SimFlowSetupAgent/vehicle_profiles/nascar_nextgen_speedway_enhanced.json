@@ -1,0 +1,513 @@
+{
+  "vehicle_info": {
+    "name": "NASCAR Next Gen Cup Car",
+    "category": "nascar",
+    "track_type": "speedway",
+    "series": "NASCAR Cup Series",
+    "description": "NASCAR Next Gen Cup Car setup parameters for speedway tracks (1.5+ mile ovals)",
+    "model_year": "2022+",
+    "weight": 3400,
+    "weight_unit": "lbs",
+    "wheelbase": 110,
+    "wheelbase_unit": "inches",
+    "track_width_front": 61.5,
+    "track_width_rear": 61.5,
+    "track_width_unit": "inches"
+  },
+  "setup_parameters": {
+    "tires": {
+      "lf_tire_pressure": {
+        "min": 15,
+        "max": 35,
+        "unit": "psi",
+        "default": 25,
+        "typical_range": [22, 28],
+        "description": "Left Front tire pressure - Lower for more grip, higher for less drag",
+        "adjustment_notes": "Adjust based on track temperature and banking angle"
+      },
+      "lr_tire_pressure": {
+        "min": 15,
+        "max": 35,
+        "unit": "psi",
+        "default": 25,
+        "typical_range": [22, 28],
+        "description": "Left Rear tire pressure - Critical for handling balance",
+        "adjustment_notes": "Higher pressure for loose condition, lower for tight"
+      },
+      "rf_tire_pressure": {
+        "min": 45,
+        "max": 65,
+        "unit": "psi",
+        "default": 55,
+        "typical_range": [50, 60],
+        "description": "Right Front tire pressure - Higher than left side for oval racing",
+        "adjustment_notes": "Adjust for front end grip and tire wear"
+      },
+      "rr_tire_pressure": {
+        "min": 45,
+        "max": 65,
+        "unit": "psi",
+        "default": 55,
+        "typical_range": [50, 60],
+        "description": "Right Rear tire pressure - Primary handling adjustment",
+        "adjustment_notes": "Most sensitive adjustment for loose/tight balance"
+      }
+    },
+    "weight_distribution": {
+      "nose_weight": {
+        "min": 48.2,
+        "max": 52.6,
+        "unit": "%",
+        "default": 50.5,
+        "typical_range": [49.5, 51.5],
+        "description": "Front weight distribution percentage - Critical for balance",
+        "adjustment_notes": "More nose weight for tight condition, less for loose"
+      },
+      "left_side_weight": {
+        "min": 51.0,
+        "max": 56.0,
+        "unit": "%",
+        "default": 53.5,
+        "typical_range": [52.5, 54.5],
+        "description": "Left side weight percentage - Affects roll balance",
+        "adjustment_notes": "Higher for more banking, lower for flatter tracks"
+      },
+      "cross_weight": {
+        "min": 48.5,
+        "max": 53.5,
+        "unit": "%",
+        "default": 51.0,
+        "typical_range": [50.0, 52.0],
+        "description": "Cross weight (wedge) percentage - RF+LR vs LF+RR",
+        "adjustment_notes": "More wedge for tight condition, less for loose"
+      }
+    },
+    "suspension": {
+      "lf_spring_rate": {
+        "min": 400,
+        "max": 4600,
+        "unit": "lbs/in",
+        "default": 2500,
+        "typical_range": [2000, 3500],
+        "description": "Left Front spring rate - Affects front end compliance",
+        "adjustment_notes": "Softer for grip, stiffer for stability"
+      },
+      "rf_spring_rate": {
+        "min": 400,
+        "max": 4600,
+        "unit": "lbs/in",
+        "default": 2500,
+        "typical_range": [2000, 3500],
+        "description": "Right Front spring rate - Balance with left front",
+        "adjustment_notes": "Usually matched to left front for symmetry"
+      },
+      "lr_spring_rate": {
+        "min": 400,
+        "max": 3000,
+        "unit": "lbs/in",
+        "default": 1800,
+        "typical_range": [1500, 2200],
+        "description": "Left Rear spring rate - Affects rear grip and handling",
+        "adjustment_notes": "Softer for more grip, stiffer for stability"
+      },
+      "rr_spring_rate": {
+        "min": 400,
+        "max": 4600,
+        "unit": "lbs/in",
+        "default": 2200,
+        "typical_range": [1800, 2800],
+        "description": "Right Rear spring rate - Critical for handling balance",
+        "adjustment_notes": "Primary adjustment for loose/tight balance"
+      },
+      "front_camber": {
+        "min": -6.0,
+        "max": 6.0,
+        "unit": "degrees",
+        "default": -3.0,
+        "typical_range": [-4.0, -2.0],
+        "description": "Front camber angle - Negative for better cornering",
+        "adjustment_notes": "More negative for more grip, less for tire wear"
+      },
+      "rear_camber": {
+        "min": -4.0,
+        "max": 4.0,
+        "unit": "degrees",
+        "default": -2.0,
+        "typical_range": [-3.0, -1.0],
+        "description": "Rear camber angle - Affects rear tire contact patch",
+        "adjustment_notes": "Adjust for tire wear and grip balance"
+      },
+      "front_caster": {
+        "min": 8.0,
+        "max": 11.0,
+        "unit": "degrees",
+        "default": 9.5,
+        "typical_range": [9.0, 10.0],
+        "description": "Front caster angle - Affects steering feel and stability",
+        "adjustment_notes": "More caster for stability, less for easier steering"
+      },
+      "front_toe": {
+        "min": -0.21875,
+        "max": 0.03125,
+        "unit": "inches",
+        "default": -0.09375,
+        "typical_range": [-0.15625, -0.03125],
+        "description": "Front toe-in (-7/32\" to +1/32\") - Affects straight line stability",
+        "adjustment_notes": "Toe-out for turn-in, toe-in for stability"
+      },
+      "lr_toe": {
+        "min": -0.15625,
+        "max": 0.15625,
+        "unit": "inches",
+        "default": 0.0625,
+        "typical_range": [0.0, 0.125],
+        "description": "Left Rear toe-in (-5/32\" to +5/32\") - Affects handling balance",
+        "adjustment_notes": "Toe-in for stability, toe-out for rotation"
+      },
+      "rr_toe": {
+        "min": -0.03125,
+        "max": 0.15625,
+        "unit": "inches",
+        "default": 0.0625,
+        "typical_range": [0.0, 0.125],
+        "description": "Right Rear toe-in (-1/32\" to +5/32\") - Critical for handling",
+        "adjustment_notes": "More toe-in for tight condition, less for loose"
+      }
+    },
+    "anti_roll_bars": {
+      "front_arb_diameter": {
+        "min": 1.375,
+        "max": 2.000,
+        "unit": "inches",
+        "default": 1.750,
+        "typical_range": [1.625, 1.875],
+        "description": "Front anti-roll bar diameter - Affects front roll stiffness",
+        "adjustment_notes": "Larger for less roll, smaller for more compliance"
+      },
+      "front_arb_arm": {
+        "min": 1,
+        "max": 5,
+        "unit": "position",
+        "default": 3,
+        "typical_range": [2, 4],
+        "description": "Front ARB arm position (1=softest, 5=stiffest)",
+        "adjustment_notes": "Higher number for stiffer front end",
+        "options": ["P1", "P2", "P3", "P4", "P5"]
+      },
+      "front_arb_preload": {
+        "min": -100,
+        "max": 50,
+        "unit": "ft-lbs",
+        "default": -25,
+        "typical_range": [-50, 0],
+        "description": "Front anti-roll bar preload - Affects initial bar loading",
+        "adjustment_notes": "Negative values unload the bar, positive preload it"
+      },
+      "rear_arb_diameter": {
+        "min": 1.375,
+        "max": 2.000,
+        "unit": "inches",
+        "default": 1.750,
+        "typical_range": [1.625, 1.875],
+        "description": "Rear anti-roll bar diameter - Critical for handling balance",
+        "adjustment_notes": "Primary adjustment for loose/tight balance"
+      },
+      "rear_arb_arm": {
+        "min": 1,
+        "max": 5,
+        "unit": "position",
+        "default": 3,
+        "typical_range": [2, 4],
+        "description": "Rear ARB arm position (1=softest, 5=stiffest)",
+        "adjustment_notes": "Most important handling adjustment",
+        "options": ["P1", "P2", "P3", "P4", "P5"]
+      },
+      "rear_arb_preload": {
+        "min": -100,
+        "max": 50,
+        "unit": "ft-lbs",
+        "default": -25,
+        "typical_range": [-50, 0],
+        "description": "Rear anti-roll bar preload - Fine tuning adjustment",
+        "adjustment_notes": "Adjust for fine balance tuning"
+      }
+    },
+    "differential": {
+      "rear_diff_preload": {
+        "min": 0,
+        "max": 75,
+        "unit": "ft-lbs",
+        "default": 35,
+        "typical_range": [25, 45],
+        "description": "Rear differential preload - Affects power application",
+        "adjustment_notes": "More preload for tighter diff, less for looser"
+      },
+      "rear_diff_coast": {
+        "min": 0,
+        "max": 75,
+        "unit": "ft-lbs",
+        "default": 15,
+        "typical_range": [10, 25],
+        "description": "Rear differential coast setting - Affects off-throttle handling",
+        "adjustment_notes": "Higher for more stability on entry"
+      }
+    },
+    "shocks": {
+      "lf_shock_compression": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Left Front shock compression (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Affects body control and grip"
+      },
+      "rf_shock_compression": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Right Front shock compression (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Balance with left front for handling"
+      },
+      "lr_shock_compression": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Left Rear shock compression (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Affects rear grip and stability"
+      },
+      "rr_shock_compression": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Right Rear shock compression (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Critical for handling balance"
+      },
+      "lf_shock_rebound": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Left Front shock rebound (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Affects how quickly suspension returns"
+      },
+      "rf_shock_rebound": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Right Front shock rebound (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Balance with left front"
+      },
+      "lr_shock_rebound": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Left Rear shock rebound (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Affects rear stability"
+      },
+      "rr_shock_rebound": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "default": 5,
+        "typical_range": [3, 7],
+        "description": "Right Rear shock rebound (1=softest/fastest, 10=stiffest/slowest)",
+        "adjustment_notes": "Critical for handling balance"
+      }
+    },
+    "aerodynamics": {
+      "front_splitter": {
+        "min": 0,
+        "max": 4,
+        "unit": "position",
+        "default": 2,
+        "typical_range": [1, 3],
+        "description": "Front splitter position (0=lowest, 4=highest)",
+        "adjustment_notes": "Lower for more front downforce, higher for less drag"
+      },
+      "rear_spoiler": {
+        "min": 0,
+        "max": 4,
+        "unit": "position",
+        "default": 2,
+        "typical_range": [1, 3],
+        "description": "Rear spoiler position (0=lowest, 4=highest)",
+        "adjustment_notes": "Higher for more rear downforce and stability"
+      },
+      "rear_deck_lid": {
+        "min": 0,
+        "max": 4,
+        "unit": "position",
+        "default": 2,
+        "typical_range": [1, 3],
+        "description": "Rear deck lid position (0=lowest, 4=highest)",
+        "adjustment_notes": "Affects rear downforce and balance"
+      }
+    },
+    "brakes": {
+      "brake_bias": {
+        "min": 50.0,
+        "max": 65.0,
+        "unit": "%",
+        "default": 57.5,
+        "typical_range": [55.0, 60.0],
+        "description": "Brake bias percentage (front brake force)",
+        "adjustment_notes": "More forward for stability, more rearward for rotation"
+      }
+    },
+    "fuel": {
+      "fuel_load": {
+        "min": 0,
+        "max": 18,
+        "unit": "gallons",
+        "default": 15,
+        "typical_range": [12, 18],
+        "description": "Fuel load for race - affects weight distribution",
+        "adjustment_notes": "Full fuel for race, minimal for qualifying"
+      }
+    }
+  },
+  "track_specific_adjustments": {
+    "superspeedway": {
+      "description": "Tracks 2.5+ miles (Daytona, Talladega)",
+      "priority_adjustments": [
+        "rear_spoiler",
+        "front_splitter",
+        "tire_pressures",
+        "nose_weight"
+      ],
+      "notes": "Focus on aerodynamics and drafting efficiency"
+    },
+    "intermediate": {
+      "description": "Tracks 1.5-2.0 miles (Charlotte, Atlanta, Las Vegas)",
+      "priority_adjustments": [
+        "rear_arb_arm",
+        "nose_weight",
+        "tire_pressures",
+        "rear_spring_rate"
+      ],
+      "notes": "Balance between downforce and mechanical grip"
+    },
+    "short_track": {
+      "description": "Tracks under 1.0 mile (Bristol, Martinsville)",
+      "priority_adjustments": [
+        "rear_arb_arm",
+        "cross_weight",
+        "brake_bias",
+        "shock_settings"
+      ],
+      "notes": "Mechanical grip and handling balance critical"
+    }
+  },
+  "optimization_priorities": {
+    "qualifying": {
+      "primary": ["rear_spoiler", "front_splitter", "tire_pressures", "fuel_load"],
+      "secondary": ["rear_arb_arm", "nose_weight", "brake_bias"],
+      "fine_tuning": ["shock_settings", "toe_adjustments"]
+    },
+    "race": {
+      "primary": ["nose_weight", "rear_arb_arm", "tire_pressures", "fuel_load"],
+      "secondary": ["cross_weight", "spring_rates", "shock_settings"],
+      "fine_tuning": ["arb_preload", "differential_preload", "brake_bias"]
+    },
+    "practice": {
+      "primary": ["rear_arb_arm", "nose_weight", "tire_pressures"],
+      "secondary": ["shock_settings", "spring_rates", "cross_weight"],
+      "fine_tuning": ["toe_adjustments", "camber", "brake_bias"]
+    }
+  },
+  "telemetry_channels": {
+    "critical": [
+      "Tire_Pressure_LF",
+      "Tire_Pressure_RF", 
+      "Tire_Pressure_LR",
+      "Tire_Pressure_RR",
+      "Nose_Weight_Percent",
+      "Cross_Weight_Percent",
+      "Left_Side_Weight_Percent",
+      "Track_Position",
+      "Lap_Time"
+    ],
+    "important": [
+      "Spring_Rate_LF",
+      "Spring_Rate_RF",
+      "Spring_Rate_LR", 
+      "Spring_Rate_RR",
+      "Shock_Velocity_LF",
+      "Shock_Velocity_RF",
+      "Shock_Velocity_LR",
+      "Shock_Velocity_RR",
+      "Tire_Temp_LF",
+      "Tire_Temp_RF",
+      "Tire_Temp_LR",
+      "Tire_Temp_RR"
+    ],
+    "supplementary": [
+      "Camber_LF",
+      "Camber_RF",
+      "Camber_LR",
+      "Camber_RR",
+      "Toe_LF",
+      "Toe_RF",
+      "Toe_LR",
+      "Toe_RR",
+      "Brake_Temp_LF",
+      "Brake_Temp_RF",
+      "Brake_Temp_LR",
+      "Brake_Temp_RR",
+      "Aero_Balance",
+      "Fuel_Level"
+    ]
+  },
+  "common_problems": {
+    "loose_entry": {
+      "description": "Car oversteers on corner entry",
+      "adjustments": [
+        "Increase rear ARB arm position",
+        "Increase nose weight",
+        "Decrease RR tire pressure",
+        "Increase front splitter",
+        "Stiffen rear shocks"
+      ]
+    },
+    "tight_entry": {
+      "description": "Car understeers on corner entry",
+      "adjustments": [
+        "Decrease rear ARB arm position",
+        "Decrease nose weight",
+        "Increase RR tire pressure",
+        "Decrease front splitter",
+        "Soften rear shocks"
+      ]
+    },
+    "loose_exit": {
+      "description": "Car oversteers on corner exit",
+      "adjustments": [
+        "Increase cross weight (wedge)",
+        "Increase rear differential preload",
+        "Decrease rear spoiler",
+        "Increase rear spring rates"
+      ]
+    },
+    "tight_exit": {
+      "description": "Car understeers on corner exit",
+      "adjustments": [
+        "Decrease cross weight (wedge)",
+        "Decrease rear differential preload",
+        "Increase rear spoiler",
+        "Decrease rear spring rates"
+      ]
+    }
+  }
+}

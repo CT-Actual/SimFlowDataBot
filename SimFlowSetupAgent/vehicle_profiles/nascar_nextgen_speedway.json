@@ -1,0 +1,201 @@
+{
+  "vehicle_info": {
+    "name": "NASCAR Next Gen Cup Car",
+    "category": "nascar",
+    "track_type": "speedway",
+    "series": "NASCAR Cup Series",
+    "description": "NASCAR Next Gen Cup Car setup parameters for speedway tracks"
+  },
+  "setup_parameters": {
+    "tires": {
+      "lf_tire_pressure": {
+        "min": 15,
+        "max": 35,
+        "unit": "psi",
+        "description": "Left Front tire pressure"
+      },
+      "lr_tire_pressure": {
+        "min": 15,
+        "max": 35,
+        "unit": "psi",
+        "description": "Left Rear tire pressure"
+      },
+      "rf_tire_pressure": {
+        "min": 45,
+        "max": 65,
+        "unit": "psi",
+        "description": "Right Front tire pressure"
+      },
+      "rr_tire_pressure": {
+        "min": 45,
+        "max": 65,
+        "unit": "psi",
+        "description": "Right Rear tire pressure"
+      }
+    },
+    "weight_distribution": {
+      "nose_weight": {
+        "min": 48.2,
+        "max": 52.6,
+        "unit": "%",
+        "description": "Front weight distribution percentage"
+      }
+    },
+    "suspension": {
+      "lf_spring_rate": {
+        "min": 400,
+        "max": 4600,
+        "unit": "lbs/in",
+        "description": "Left Front spring rate"
+      },
+      "rf_spring_rate": {
+        "min": 400,
+        "max": 4600,
+        "unit": "lbs/in",
+        "description": "Right Front spring rate"
+      },
+      "lr_spring_rate": {
+        "min": 400,
+        "max": 3000,
+        "unit": "lbs/in",
+        "description": "Left Rear spring rate"
+      },
+      "rr_spring_rate": {
+        "min": 400,
+        "max": 4600,
+        "unit": "lbs/in",
+        "description": "Right Rear spring rate"
+      },
+      "front_camber": {
+        "min": -6.0,
+        "max": 6.0,
+        "unit": "degrees",
+        "description": "Front camber angle"
+      },
+      "rear_camber": {
+        "min": -4.0,
+        "max": 4.0,
+        "unit": "degrees",
+        "description": "Rear camber angle"
+      },
+      "front_caster": {
+        "min": 8.0,
+        "max": 11.0,
+        "unit": "degrees",
+        "description": "Front caster angle"
+      },
+      "front_toe": {
+        "min": -0.21875,
+        "max": 0.03125,
+        "unit": "inches",
+        "description": "Front toe-in (-7/32\" to +1/32\")"
+      },
+      "lr_toe": {
+        "min": -0.15625,
+        "max": 0.15625,
+        "unit": "inches",
+        "description": "Left Rear toe-in (-5/32\" to +5/32\")"
+      },
+      "rr_toe": {
+        "min": -0.03125,
+        "max": 0.15625,
+        "unit": "inches",
+        "description": "Right Rear toe-in (-1/32\" to +5/32\")"
+      }
+    },
+    "anti_roll_bars": {
+      "front_arb_diameter": {
+        "min": 1.375,
+        "max": 2.000,
+        "unit": "inches",
+        "description": "Front anti-roll bar diameter"
+      },
+      "front_arb_arm": {
+        "min": 1,
+        "max": 5,
+        "unit": "position",
+        "description": "Front ARB arm position (1=softest, 5=stiffest)",
+        "options": ["P1", "P2", "P3", "P4", "P5"]
+      },
+      "front_arb_preload": {
+        "min": -100,
+        "max": 50,
+        "unit": "ft-lbs",
+        "description": "Front anti-roll bar preload"
+      },
+      "rear_arb_diameter": {
+        "min": 1.375,
+        "max": 2.000,
+        "unit": "inches",
+        "description": "Rear anti-roll bar diameter"
+      },
+      "rear_arb_arm": {
+        "min": 1,
+        "max": 5,
+        "unit": "position",
+        "description": "Rear ARB arm position (1=softest, 5=stiffest)",
+        "options": ["P1", "P2", "P3", "P4", "P5"]
+      },
+      "rear_arb_preload": {
+        "min": -100,
+        "max": 50,
+        "unit": "ft-lbs",
+        "description": "Rear anti-roll bar preload"
+      }
+    },
+    "differential": {
+      "rear_diff_preload": {
+        "min": 0,
+        "max": 75,
+        "unit": "ft-lbs",
+        "description": "Rear differential preload"
+      }
+    },
+    "shocks": {
+      "shock_setting": {
+        "min": 1,
+        "max": 10,
+        "unit": "clicks",
+        "description": "Shock absorber setting (1=softest/fastest, 10=stiffest/slowest)"
+      }
+    }
+  },
+  "optimization_priorities": {
+    "speedway": {
+      "primary": ["nose_weight", "rear_arb_arm", "rf_tire_pressure", "rr_tire_pressure"],
+      "secondary": ["front_arb_arm", "lr_spring_rate", "rr_spring_rate"],
+      "fine_tuning": ["front_arb_preload", "rear_arb_preload", "rear_diff_preload"]
+    }
+  },
+  "telemetry_channels": {
+    "critical": [
+      "Tire_Pressure_LF",
+      "Tire_Pressure_RF", 
+      "Tire_Pressure_LR",
+      "Tire_Pressure_RR",
+      "Nose_Weight_Percent",
+      "Wedge_Adjustment",
+      "Track_Bar_Height"
+    ],
+    "important": [
+      "Spring_Rate_LF",
+      "Spring_Rate_RF",
+      "Spring_Rate_LR", 
+      "Spring_Rate_RR",
+      "Shock_Velocity_LF",
+      "Shock_Velocity_RF",
+      "Shock_Velocity_LR",
+      "Shock_Velocity_RR"
+    ],
+    "supplementary": [
+      "Camber_LF",
+      "Camber_RF",
+      "Camber_LR",
+      "Camber_RR",
+      "Toe_LF",
+      "Toe_RF",
+      "Toe_LR",
+      "Toe_RR"
+    ]
+  }
+}

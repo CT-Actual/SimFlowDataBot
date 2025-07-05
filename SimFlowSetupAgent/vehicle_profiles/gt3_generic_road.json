@@ -1,0 +1,347 @@
+{
+  "vehicle_info": {
+    "name": "GT3 Cars (Generic)",
+    "category": "gt3",
+    "track_type": "road_course",
+    "series": "IMSA/VRS/GT3 Series",
+    "description": "Generic GT3 car setup parameters for road course tracks"
+  },
+  "setup_parameters": {
+    "tires": {
+      "tire_pressure_lf": {
+        "min": 20.0,
+        "max": 28.0,
+        "unit": "psi",
+        "description": "Left Front starting tire pressure"
+      },
+      "tire_pressure_rf": {
+        "min": 20.0,
+        "max": 28.0,
+        "unit": "psi",
+        "description": "Right Front starting tire pressure"
+      },
+      "tire_pressure_lr": {
+        "min": 20.0,
+        "max": 28.0,
+        "unit": "psi",
+        "description": "Left Rear starting tire pressure"
+      },
+      "tire_pressure_rr": {
+        "min": 20.0,
+        "max": 28.0,
+        "unit": "psi",
+        "description": "Right Rear starting tire pressure"
+      }
+    },
+    "aerodynamics": {
+      "rear_wing_angle": {
+        "min": 1,
+        "max": 11,
+        "unit": "degrees",
+        "description": "Rear wing angle (higher = more downforce, more drag)"
+      },
+      "ride_height_front": {
+        "min": 37,
+        "max": 80,
+        "unit": "mm",
+        "description": "Front ride height (affects aero balance and downforce)"
+      },
+      "ride_height_rear": {
+        "min": 40,
+        "max": 85,
+        "unit": "mm",
+        "description": "Rear ride height (affects aero balance and downforce)"
+      },
+      "front_splitter_height": {
+        "min": 1.5,
+        "max": 2.5,
+        "unit": "inches",
+        "description": "Center front splitter height"
+      }
+    },
+    "suspension": {
+      "corner_weight_lf": {
+        "min": 600,
+        "max": 800,
+        "unit": "lbs",
+        "description": "Left Front corner weight"
+      },
+      "corner_weight_rf": {
+        "min": 600,
+        "max": 800,
+        "unit": "lbs",
+        "description": "Right Front corner weight"
+      },
+      "corner_weight_lr": {
+        "min": 800,
+        "max": 1000,
+        "unit": "lbs",
+        "description": "Left Rear corner weight"
+      },
+      "corner_weight_rr": {
+        "min": 800,
+        "max": 1000,
+        "unit": "lbs",
+        "description": "Right Rear corner weight"
+      },
+      "spring_rate_front": {
+        "min": 500,
+        "max": 1200,
+        "unit": "lbs/in",
+        "description": "Front spring rate"
+      },
+      "spring_rate_rear": {
+        "min": 400,
+        "max": 1000,
+        "unit": "lbs/in",
+        "description": "Rear spring rate"
+      },
+      "camber_front": {
+        "min": -5.0,
+        "max": -2.0,
+        "unit": "degrees",
+        "description": "Front camber angle"
+      },
+      "camber_rear": {
+        "min": -4.0,
+        "max": -1.5,
+        "unit": "degrees",
+        "description": "Rear camber angle"
+      },
+      "toe_front": {
+        "min": -0.200,
+        "max": 0.100,
+        "unit": "inches",
+        "description": "Front total toe-in"
+      },
+      "toe_rear": {
+        "min": 0.000,
+        "max": 0.150,
+        "unit": "inches",
+        "description": "Rear toe-in (per wheel)"
+      },
+      "bump_rubber_gap_front": {
+        "min": 0.300,
+        "max": 0.800,
+        "unit": "inches",
+        "description": "Front bump rubber gap"
+      },
+      "bump_rubber_gap_rear": {
+        "min": 0.500,
+        "max": 1.200,
+        "unit": "inches",
+        "description": "Rear bump rubber gap"
+      }
+    },
+    "anti_roll_bars": {
+      "arb_front_blades": {
+        "min": 1,
+        "max": 8,
+        "unit": "blades",
+        "description": "Front anti-roll bar blade count"
+      },
+      "arb_rear_blades": {
+        "min": 1,
+        "max": 8,
+        "unit": "blades",
+        "description": "Rear anti-roll bar blade count"
+      }
+    },
+    "brakes": {
+      "brake_bias": {
+        "min": 45.0,
+        "max": 65.0,
+        "unit": "%",
+        "description": "Brake pressure bias (% front)"
+      },
+      "brake_master_cylinder_front": {
+        "min": 0.700,
+        "max": 0.900,
+        "unit": "inches",
+        "description": "Front brake master cylinder diameter"
+      },
+      "brake_master_cylinder_rear": {
+        "min": 0.750,
+        "max": 0.950,
+        "unit": "inches",
+        "description": "Rear brake master cylinder diameter"
+      },
+      "brake_pads": {
+        "options": ["Low friction", "Medium friction", "High friction"],
+        "description": "Brake pad compound selection"
+      }
+    },
+    "differential": {
+      "friction_faces": {
+        "min": 4,
+        "max": 12,
+        "unit": "faces",
+        "description": "Differential friction face count"
+      },
+      "diff_preload": {
+        "min": 20,
+        "max": 120,
+        "unit": "ft-lbs",
+        "description": "Differential preload torque"
+      }
+    },
+    "dampers": {
+      "front_low_speed_compression": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Front low speed compression damping"
+      },
+      "front_high_speed_compression": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Front high speed compression damping"
+      },
+      "front_low_speed_rebound": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Front low speed rebound damping"
+      },
+      "front_high_speed_rebound": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Front high speed rebound damping"
+      },
+      "rear_low_speed_compression": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Rear low speed compression damping"
+      },
+      "rear_high_speed_compression": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Rear high speed compression damping"
+      },
+      "rear_low_speed_rebound": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Rear low speed rebound damping"
+      },
+      "rear_high_speed_rebound": {
+        "min": 1,
+        "max": 20,
+        "unit": "clicks",
+        "description": "Rear high speed rebound damping"
+      }
+    },
+    "driver_aids": {
+      "abs_setting": {
+        "min": 1,
+        "max": 12,
+        "unit": "setting",
+        "description": "ABS setting (1=OFF, 2-7=Dry, 8-12=Wet)"
+      },
+      "tc_setting": {
+        "min": 1,
+        "max": 12,
+        "unit": "setting",
+        "description": "Traction Control setting (1=OFF, 2-7=Dry, 8-12=Wet)"
+      }
+    },
+    "gears": {
+      "gear_stack": {
+        "options": ["FIA", "Alternative"],
+        "description": "Gear ratio stack selection"
+      }
+    },
+    "fuel": {
+      "fuel_level": {
+        "min": 0,
+        "max": 33,
+        "unit": "gallons",
+        "description": "Fuel load"
+      }
+    },
+    "weight_distribution": {
+      "front_weight_dist": {
+        "min": 40.0,
+        "max": 48.0,
+        "unit": "%",
+        "description": "Front weight distribution percentage"
+      },
+      "cross_weight": {
+        "min": 45.0,
+        "max": 55.0,
+        "unit": "%",
+        "description": "Cross weight percentage"
+      }
+    }
+  },
+  "optimization_priorities": {
+    "road_course": {
+      "primary": ["rear_wing_angle", "tire_pressure_lf", "tire_pressure_rf", "tire_pressure_lr", "tire_pressure_rr"],
+      "secondary": ["ride_height_front", "ride_height_rear", "spring_rate_front", "spring_rate_rear"],
+      "fine_tuning": ["arb_front_blades", "arb_rear_blades", "diff_preload", "friction_faces"]
+    },
+    "sprint": {
+      "primary": ["rear_wing_angle", "tire_pressure_lf", "tire_pressure_rf", "tire_pressure_lr", "tire_pressure_rr"],
+      "secondary": ["brake_bias", "camber_front", "camber_rear"],
+      "fine_tuning": ["tc_setting", "abs_setting", "toe_front", "toe_rear"]
+    },
+    "endurance": {
+      "primary": ["tire_pressure_lf", "tire_pressure_rf", "tire_pressure_lr", "tire_pressure_rr", "fuel_level"],
+      "secondary": ["rear_wing_angle", "spring_rate_front", "spring_rate_rear"],
+      "fine_tuning": ["diff_preload", "brake_bias", "tc_setting"]
+    }
+  },
+  "telemetry_channels": {
+    "critical": [
+      "Rear_Wing_Angle",
+      "Tire_Pressure_LF",
+      "Tire_Pressure_RF",
+      "Tire_Pressure_LR",
+      "Tire_Pressure_RR",
+      "Tire_Temperature_LF_O",
+      "Tire_Temperature_LF_M", 
+      "Tire_Temperature_LF_I",
+      "Tire_Temperature_RF_I",
+      "Tire_Temperature_RF_M",
+      "Tire_Temperature_RF_O",
+      "Tire_Temperature_LR_O",
+      "Tire_Temperature_LR_M",
+      "Tire_Temperature_LR_I",
+      "Tire_Temperature_RR_I",
+      "Tire_Temperature_RR_M",
+      "Tire_Temperature_RR_O"
+    ],
+    "important": [
+      "Ride_Height_LF",
+      "Ride_Height_RF",
+      "Ride_Height_LR",
+      "Ride_Height_RR",
+      "Spring_Rate_Front",
+      "Spring_Rate_Rear",
+      "Corner_Weight_LF",
+      "Corner_Weight_RF",
+      "Corner_Weight_LR",
+      "Corner_Weight_RR",
+      "Brake_Bias",
+      "Front_Downforce_Percent"
+    ],
+    "supplementary": [
+      "Camber_LF",
+      "Camber_RF",
+      "Camber_LR",
+      "Camber_RR",
+      "Toe_Front_Total",
+      "Toe_LR",
+      "Toe_RR",
+      "Differential_Preload",
+      "ABS_Setting",
+      "TC_Setting",
+      "Fuel_Level",
+      "Cross_Weight_Percent"
+    ]
+  }
+}
