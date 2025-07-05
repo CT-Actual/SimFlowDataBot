@@ -1,6 +1,6 @@
-pandas>=1.5.0
+beautifulsoup4>=4.11.0
 duckdb
 numpy>=1.21.0
-beautifulsoup4>=4.11.0
 openpyxl>=3.0.0
+pandas>=1.5.0
 pathlib # pathlib is a standard library, but including it for clarity

@@ -88,10 +88,10 @@ To set up the development environment:
     # Activate (Linux/macOS)
     source .venv/bin/activate
     ```
-4.  **Install Python packages**:
+4.  **Install Python packages** (for both agents):
     ```bash
     # Run this from the repository root
-    pip install -r requirements.txt
+    pip install -r requirements.txt  # includes SimFlowSetupAgent
     ```
 
 ## 📝 Example Usage
