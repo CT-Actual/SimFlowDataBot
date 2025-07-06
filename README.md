@@ -76,6 +76,10 @@ When you have new racing data files to process:
   - `duckdb`
   - `pathlib`
 
+The Java watcher uses the `PYTHON_CMD` environment variable to locate the
+Python interpreter. If unset, it falls back to `python`. You may also pass the
+interpreter path as the first argument when running `DropOffWatcher` directly.
+
 ## 💻 Development Setup
 
 To set up the development environment:

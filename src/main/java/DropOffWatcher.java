@@ -23,6 +23,25 @@ public class DropOffWatcher implements Runnable {
     private final int debounceMillis = 2_000;   // 2 s
     private final int bundleWindowMillis = 30_000;  // 30 s
 
+    /** Python interpreter command. Defaults to "python". */
+    private final String pythonCmd;
+
+    /**
+     * Create watcher with interpreter path from environment or provided value.
+     * @param pythonCmdArg optional interpreter path; may be null or blank
+     */
+    public DropOffWatcher(String pythonCmdArg) {
+        String env = System.getenv("PYTHON_CMD");
+        String base = (pythonCmdArg != null && !pythonCmdArg.isBlank()) ?
+                pythonCmdArg : env;
+        this.pythonCmd = (base == null || base.isBlank()) ? "python" : base;
+    }
+
+    /** Default constructor uses environment variable PYTHON_CMD if present. */
+    public DropOffWatcher() {
+        this(null);
+    }
+
     private final Map<String, Long> sessionLastModified = new ConcurrentHashMap<>();
 
     @Override
@@ -179,10 +198,7 @@ public class DropOffWatcher implements Runnable {
                 return;
             }
 
-            String osName = System.getProperty("os.name", "").toLowerCase();
-            String pythonCmd = osName.contains("win") ? "python" : "python";
-
-            ProcessBuilder pb = new ProcessBuilder(pythonCmd, pythonScript.toAbsolutePath().toString());
+            ProcessBuilder pb = new ProcessBuilder(this.pythonCmd, pythonScript.toAbsolutePath().toString());
             pb.command().addAll(java.util.Arrays.asList(args));
             pb.inheritIO();
             System.out.println("Launching command: " + String.join(" ", pb.command()));
@@ -231,7 +247,12 @@ public class DropOffWatcher implements Runnable {
 
     public static void main(String[] args) {
         System.out.println("[DropOffWatcher] Starting one-shot processing...");
-        DropOffWatcher watcher = new DropOffWatcher();
+
+        String pythonArg = null;
+        if (args.length > 0) {
+            pythonArg = args[0];
+        }
+        DropOffWatcher watcher = new DropOffWatcher(pythonArg);
         try {
             watcher.processExistingFiles();
             System.out.println("[DropOffWatcher] One-shot processing completed.");
