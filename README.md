@@ -3,6 +3,11 @@
 
 A multi-agent racing data workflow system that processes MoTeC exports, converts to Parquet, and generates reports.
 
+Additional guides are available in the `docs/` directory:
+- [User Manual](docs/USER_MANUAL.md)
+- [Installation Guide](docs/INSTALLATION.md)
+- [Developer Guide](docs/DEVELOPER_GUIDE.md)
+
 ## 🚀 Quick Start
 
 ### Manual Processing Mode
@@ -16,6 +21,11 @@ When you have new racing data files to process:
    ```
 3. **Confirm processing** when prompted
 4. **Check results** in the generated session directories
+5. **Optional combined workflow**:
+   ```bash
+   python run_full_workflow.py
+   ```
+   This processes telemetry and any setup files in one step.
 
 ## 📁 Directory Structure
 
