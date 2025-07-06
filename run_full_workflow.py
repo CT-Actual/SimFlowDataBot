@@ -2,13 +2,14 @@
 """Run telemetry processing and setup analysis in one step."""
 import subprocess
 from pathlib import Path
+import argparse
 
 
 def run_process_dropoff():
     subprocess.run(["python", "process_dropoff.py"], check=False)
 
 
-def run_setup_analysis():
+def run_setup_analysis(vehicle: str):
     setup_dir = Path("SimFlowSetupAgent/DROP-OFF/setup_files")
     if not setup_dir.exists():
         print("No setup files directory found.")
@@ -22,7 +23,7 @@ def run_setup_analysis():
                 "--file",
                 str(file),
                 "--vehicle",
-                "gt3",
+                vehicle,
                 "--session",
                 "sprint",
             ]
@@ -30,8 +31,18 @@ def run_setup_analysis():
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description="Run telemetry processing and setup analysis in one step"
+    )
+    parser.add_argument(
+        "--vehicle",
+        default="gt3",
+        help="Vehicle category for setup analysis (default: gt3)",
+    )
+    args = parser.parse_args()
+
     run_process_dropoff()
-    run_setup_analysis()
+    run_setup_analysis(args.vehicle)
 
 
 if __name__ == "__main__":
