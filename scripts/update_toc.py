@@ -5,7 +5,7 @@ Append or update a row in TOC.md for the given session.
 Usage:
     update_toc.py <session_id> <car_root>
 """
-import pandas as pd, sys, pathlib, datetime as dt
+import pandas as pd, sys, pathlib, datetime as dt, duckdb
 
 session_id, car_root = sys.argv[1], pathlib.Path(sys.argv[2]).resolve()
 toc_path = car_root / "TOC.md"
@@ -46,13 +46,32 @@ else:
     # Fallback for other formats
     date, track, run = "unknown", session_id, "01"
 
+session_dir = car_root / "SESSIONS" / session_id
+db_file = session_dir / "DB" / "session.duckdb"
+laps = 0
+fast_lap = "--"
+if db_file.exists():
+    try:
+        con = duckdb.connect(str(db_file))
+        laps = con.execute("SELECT COUNT(*) FROM laps").fetchone()[0]
+        row = con.execute(
+            "SELECT MIN(total_lap_time) FROM laps WHERE total_lap_time IS NOT NULL"
+        ).fetchone()
+        if row and row[0] is not None:
+            fast_lap = f"{row[0]:.3f}s"
+        con.close()
+    except Exception as e:
+        print(f"[update_toc] DuckDB query failed: {e}")
+else:
+    print(f"[update_toc] DB not found: {db_file}")
+
 meta = {
     "Session ID": session_id,
     "Date"      : date,
     "Track"     : track,
     "Run"       : run,
-    "Laps"      : 0,     # TODO query DuckDB
-    "Fast Lap"  : "--",  # TODO query DuckDB
+    "Laps"      : laps,
+    "Fast Lap"  : fast_lap,
     "Notes"     : ""
 }
 
