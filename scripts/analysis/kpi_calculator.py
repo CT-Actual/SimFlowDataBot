@@ -193,52 +193,6 @@ class KPICalculator:
             'session_stability': 1 - abs(progression_trend) if abs(progression_trend) < 1 else 0
         }
     
-    def _calculate_performance_summary(self, lap_summary: Dict[str, Any]) -> Dict[str, Any]:
-        """Calculate overall performance summary."""
-        best_lap = lap_summary.get('best_lap_time', 0)
-        consistency_index = lap_summary.get('consistency_index', 0)
-        performance_window = lap_summary.get('performance_window_1pct', 0)
-        progression_trend = lap_summary.get('lap_progression_trend', 0)
-        
-        # Calculate overall performance score (0-100)
-        pace_score = 50  # Base score, would need reference data for proper rating
-        consistency_score = max(0, 100 - (consistency_index * 1000))
-        progression_score = min(100, max(0, 50 + (progression_trend * 500)))
-        
-        overall_score = (pace_score + consistency_score + progression_score) / 3
-        
-        # Performance grade
-        if overall_score >= 90:
-            grade = "A+"
-        elif overall_score >= 85:
-            grade = "A"
-        elif overall_score >= 80:
-            grade = "A-"
-        elif overall_score >= 75:
-            grade = "B+"
-        elif overall_score >= 70:
-            grade = "B"
-        elif overall_score >= 65:
-            grade = "B-"
-        elif overall_score >= 60:
-            grade = "C+"
-        elif overall_score >= 55:
-            grade = "C"
-        elif overall_score >= 50:
-            grade = "C-"
-        else:
-            grade = "D"
-        
-        return {
-            'overall_performance_score': round(overall_score, 1),
-            'performance_grade': grade,
-            'pace_score': round(pace_score, 1),
-            'consistency_score': round(consistency_score, 1),
-            'progression_score': round(progression_score, 1),
-            'key_strengths': self._identify_strengths(kpis_full), # Pass full kpis
-            'improvement_areas': self._identify_improvement_areas(kpis_full) # Pass full kpis
-        }
-    
     def _calculate_performance_summary(self, lap_summary: Dict[str, Any], kpis_full: Dict[str, Any]) -> Dict[str, Any]:
         """Calculate overall performance summary."""
         best_lap = lap_summary.get('best_lap_time', 0)
