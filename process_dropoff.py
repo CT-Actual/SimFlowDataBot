@@ -69,10 +69,10 @@ def main():
     try:
         # Compile Java classes
         print("🔨 Compiling Java classes...")
+        java_files = [str(p) for p in Path("src/main/java").glob("*.java")]
         subprocess.run([
-            "javac", "src/main/java/*.java", 
-            "-d", "build/classes/java/main"
-        ], check=True, capture_output=True)
+            "javac", *java_files, "-d", "build/classes/java/main"
+        ], check=True)
         
         # Run DropOffWatcher in one-shot mode
         print("🏃 Running DropOffWatcher...")
