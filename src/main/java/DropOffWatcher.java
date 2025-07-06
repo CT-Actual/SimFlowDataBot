@@ -179,7 +179,10 @@ public class DropOffWatcher implements Runnable {
                 return;
             }
 
-            ProcessBuilder pb = new ProcessBuilder("python.exe", pythonScript.toAbsolutePath().toString());
+            String osName = System.getProperty("os.name", "").toLowerCase();
+            String pythonCmd = osName.contains("win") ? "python" : "python";
+
+            ProcessBuilder pb = new ProcessBuilder(pythonCmd, pythonScript.toAbsolutePath().toString());
             pb.command().addAll(java.util.Arrays.asList(args));
             pb.inheritIO();
             System.out.println("Launching command: " + String.join(" ", pb.command()));
