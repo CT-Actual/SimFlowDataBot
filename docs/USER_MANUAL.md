@@ -46,9 +46,9 @@ SimFlowSetupAgent/DROP-OFF/motec_sheets/
 ## 5. Combined Workflow
 For convenience you can run both agents sequentially:
 ```bash
-python run_full_workflow.py
+python run_full_workflow.py --vehicle gt3
 ```
-This processes any files in `DROP-OFF/` and then analyzes all setup files waiting in `SimFlowSetupAgent/DROP-OFF/setup_files/`.
+This processes any files in `DROP-OFF/` and then analyzes all setup files waiting in `SimFlowSetupAgent/DROP-OFF/setup_files/`. Pass `--vehicle` to select a different setup profile when needed.
 
 ## 6. Troubleshooting
 - **No files processed**: Ensure the `DROP-OFF/` directory exists and contains files.

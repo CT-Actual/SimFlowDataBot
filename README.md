@@ -23,9 +23,10 @@ When you have new racing data files to process:
 4. **Check results** in the generated session directories
 5. **Optional combined workflow**:
    ```bash
-   python run_full_workflow.py
+   python run_full_workflow.py --vehicle gt3
    ```
-   This processes telemetry and any setup files in one step.
+   This processes telemetry and any setup files in one step. The `--vehicle`
+   argument lets you specify a different setup profile when needed.
 
 ## 📁 Directory Structure
 
