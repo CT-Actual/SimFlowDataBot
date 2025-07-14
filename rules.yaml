@@ -1,0 +1,27 @@
+rules:
+  understeer:
+    telemetry_checks:
+      - channel: slip_angle_front_avg
+        condition: "> rear_slip_avg * 1.05"
+        severity: high
+    setup_suggestions:
+      - param: front_arb_stiffness
+        change: "soften by 1-2 clicks"
+        reason: "Reduce front roll resistance for better turn-in"
+      - param: rear_wing_angle
+        change: "increase by 1"
+        reason: "Add rear downforce for balance"
+    expected_gain: "0.1-0.3s/lap"
+  tire_overheat_front:
+    telemetry_checks:
+      - channel: tire_temp_outer_front_avg
+        condition: "> 100"
+        severity: medium
+    setup_suggestions:
+      - param: front_camber
+        change: "reduce negative by 0.2°"
+        reason: "Less camber to even temp spread"
+      - param: front_tire_pressure
+        change: "increase by 0.2 psi"
+        reason: "Higher pressure for reduced flex"
+    expected_gain: "0.05-0.1s/lap"
