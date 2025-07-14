@@ -13,29 +13,15 @@ from pathlib import Path
 from datetime import datetime
 
 
-def _run_setup_agent(file_path: Path, car_name: str):
-    """Run SimFlowSetupAgent on the given file and store JSON output."""
-    cmd = [
-        "python",
-        "SimFlowSetupAgent/simflow_setup_agent.py",
-        "analyze",
-        "--file",
-        str(file_path),
-        "--vehicle",
-        car_name,
-        "--output",
-        "json",
-    ]
-    print(f"\n🛠️  Analyzing setup: {file_path.name}")
+def _run_optimizer(session_dir: Path):
+    """Run the optimize_setup.py script for a session."""
+    if not session_dir.exists():
+        return
+    cmd = ["python", "optimize_setup.py", "--session", str(session_dir)]
+    print(f"\n🔧 Optimizing session: {session_dir.name}")
     subprocess.run(cmd, check=False)
 
-    json_name = f"{file_path.stem}_analysis.json"
-    json_path = Path("SimFlowSetupAgent/output") / json_name
-    if json_path.exists():
-        dest_dir = Path("SimFlowSetupAgent/PROCESSED/by_car") / car_name / datetime.now().strftime("%Y-%m-%d")
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        shutil.move(str(json_path), dest_dir / json_name)
-        shutil.copy2(file_path, dest_dir / file_path.name)
+
 
 def main():
     print("🏁 SimFlowDataAgent - Processing DROP-OFF directory...")
@@ -107,11 +93,7 @@ def main():
                 raw_dir = sessions_root / session_id / "RAW"
                 if not raw_dir.exists():
                     continue
-                for f in raw_dir.iterdir():
-                    lower = f.name.lower()
-                    if lower.endswith('.htm') or lower.endswith('.xlsm') or \
-                       lower.endswith('.xlsx') or (lower.endswith('.csv') and 'setup' in lower):
-                        _run_setup_agent(f, car_name)
+                _run_optimizer(sessions_root / session_id)
                 
         else:
             print("❌ Processing failed!")
